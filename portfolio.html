@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+        }
+
+        body {
+            color: #ededed;
+            background:url("bg2.jpg"),linear-gradient(rgb(113, 8, 113,0.3),rgb(10, 10, 118,0.5));
+            align-items: center;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 10%;
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            z-index: 100;
+        }
+
+        .logo {
+            position: relative;
+            font-size: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: default;
+            opacity: 0;
+            animation: slideRight 1s ease forwards;
+        }
+
+        .navbar a {
+            display: inline-block;
+            font-size: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+            transition: .3s;
+            opacity: 0;
+            animation: slideTop .5s ease forwards;
+            animation-delay: calc(.2s * var(--1));
+        }
+
+        .navbar a:hover {
+            color: goldenrod;
+        }
+
+        .home{
+            position: relative;
+            width: 100%;
+            justify-content: space-between;
+            height: 100vh;
+            background: transparent;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 70px 10% 0;
+        }
+
+        .home-content {
+            max-width: 600px;
+        }
+
+        .home-content h3 ,.contact h3,.Projects label{
+            font-size: 32px;
+            font-weight: 700;
+            opacity: 0;
+            animation: slideBottom 1s ease forwards;
+            animation-delay: .7s;
+        }
+
+        .home-content h3:nth-of-type(2) {
+            margin-bottom: 30px;
+            animation: slideTop 1s ease forwards;
+            animation-delay: .7s;
+
+        }
+
+        .home-content h3 span {
+            color: goldenrod;
+        }
+
+        .home-content h1 {
+            font-size: 50px;
+            font-weight: 700;
+            margin: -3px 0;
+            opacity: 0;
+            animation: slideRight 1s ease forwards;
+            animation-delay: 1s;
+        }
+
+        .home-content p {
+            font-size: 20px;
+            opacity: 0;
+            animation: slideLeft 1s ease forwards;
+            animation-delay: 1s;
+        }
+
+        .home-sci a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 2px solid gold;
+            border-radius: 50%;
+            font-size: 20px;
+            color: gold;
+            text-decoration: none;
+            transition: .5s ease;
+            opacity: 0;
+            animation: slideLeft 1s ease forwards;
+            animation-delay: calc(.2s * var(--1));
+            margin: 30px 15px 30px 0;
+        }
+
+        .home-sci a:hover {
+            background: gold;
+            color: black;
+            box-shadow: 0 0 20pc goldenrod;
+        }
+
+        .btn-box,.user-contact button {
+            display: inline-block;
+            padding: 12px 20px;
+            background: goldenrod;
+            border-radius: 40px;
+            font-size: 16px;
+            color: black;
+            letter-spacing: 1px;
+            text-decoration: none;
+            font-weight: 600;
+            opacity: 0;
+            animation: slideTop 1s ease forwards;
+            animation-delay: 2s;
+            box-shadow: 0 0 5px #0ef, 0 0 25 rgb(255, 111, 0);
+            width: 200px;
+            text-align: center;
+        }
+
+        .btn-box:hover,
+        .read:hover,
+        .user-contact button:hover {
+            box-shadow: 0 0 5px rgb(255, 111, 0),
+            0 0 25px rgb(237, 130, 7), 0 0 50px cyan,
+            0 0 100px rgb(81, 193, 12), 0 0 200px rgb(188, 230, 17);
+
+        }
+
+        .about {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            gap: 1.5rem;
+            background: transparent;
+            background-size: cover;
+            padding: 40px;
+        }
+
+         .about-img img {
+            margin-left: 30px;
+            max-width: 300px;
+            height: auto;
+            border-radius: 50%;
+            position: relative;
+            background: transparent;
+            border-width: 2px;
+            border-color: purple;
+             box-shadow:  0 0 5px violet,
+            0 0 25px plum,0 0 50px purple,
+            0 0 100px blueviolet , 0 0 200px blue; 
+        } 
+       
+        .about-text h2 {
+            font-size: 60px;
+            background: transparent;
+        }
+
+        .about-text h2 span ,.sub-title span,.contact span,.Projects span{
+            color: goldenrod;
+            background: transparent;
+        }
+
+        .about-text h4 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.7;
+            margin: 15px 0 30px;
+            background: transparent;
+            animation: slideLeft 1s ease forwards;
+            animation-delay: calc(.2s * var(--1))
+        }
+
+        .about-text p {
+            color: aliceblue;
+            font-size: 20px;
+            line-height: 1.4;
+            margin-bottom: 4rem;
+            background: transparent;
+            animation: slideLeft 1s ease forwards;
+            animation-delay: 1.2s;
+        }
+
+
+        .service{
+            color: aliceblue;
+            font-size: 20px;
+            line-height: 1.4;
+            margin-bottom: 4rem;
+        }
+        .sub-title,.contact h1,.Projects h1{
+            text-align: center;
+            font-size: 60px;
+            padding-bottom: 20px;
+        }
+       
+        .container{
+            padding: 20px;
+            background: transparent;
+            background-size: cover;
+            background-position: center;
+            
+        }
+        .service-list{
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+            grid-gap: 20px;
+            margin-top: 30px;
+        }
+        .service-list div{
+            background-color:black;
+            padding:30px;
+            font-size: 13px;
+            font-weight: 13px;
+            border-right: 10px;
+            border-radius: 20px;
+            transition: background 0.5s, transfrom 0.5s;
+            box-shadow: 1px 1px 20px #88880f,
+            1px 1px 40px goldenrod;
+        }
+        .service-list div i{
+            font-size: 50px;
+            margin-bottom: 30px;
+        }
+        .service-list div h2 ,.bar{
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        .service-list div a{
+            text-decoration: none;
+            color: black;
+            font-size: 12px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .read{
+            display: inline-block;
+            padding: 12px 20px;
+            background: goldenrod;
+            border-radius: 40px;
+            font-size: 16px;
+            color: black;
+            letter-spacing: 1px;
+            text-decoration: none;
+            font-weight: 600;
+            opacity: 0;
+            animation: slideTop 1s ease forwards;
+            animation-delay: 2s;
+            box-shadow: 0 0 5px  #0ef, 0 0 25  rgb(255, 111, 0);
+        }
+        .read:hover{
+            box-shadow:  0 0 5px cyan,
+            0 0 25px green,0 0 50px orange,
+            0 0 100px red , 0 0 200px blue;
+        }
+        .service-list div:hover{
+            transform: translateY(-10px);
+        }
+        .section{
+            display: flex;
+            /*flex-wrap: wrap;*/
+        }
+        .heading{
+            text-align: center;
+            text-decoration: underline;
+            text-decoration-thickness: 5px;
+            margin-bottom: 50px;
+        }
+       
+        .heading1, .heading2 {
+            font-size: 32px;
+            font-weight: 700;
+            opacity: 0;
+            animation: slideBottom 1s ease forwards;
+            animation-delay: 0.7s;
+            padding: 1px;
+        }
+        .Projects img{
+            width:350px;
+            box-shadow: 1px 1px 20px #88880f,
+            1px 1px 40px goldenrod;
+            padding: 10px;
+        }
+        
+        /*=================*/
+        .heading2,.heading1 {
+            text-align: center;
+            text-decoration: underline;
+            text-decoration-thickness: 5px;
+            margin-bottom: 50px;
+            margin-left: 50px; 
+        }
+        .service-list1 {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .bx {
+            font-size: 30px;
+            margin-top: 0;
+        }
+        .info img {
+            padding: 10px;
+        }
+
+        table {
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .radial-bar,
+        .heading2 {
+            margin-left: 90px;
+            padding: 30px;
+            line-height: 35px;
+            margin-top: 1px;
+            margin-bottom: 1px;
+            background: transparent;
+        }
+        .technical-bar,
+        .heading1 {
+            margin-left: 45px;
+            padding: 30px;
+            line-height: 35px;
+            margin-top: 1px;
+            background: transparent;        
+        }
+        .technical-bar,
+        .radial-bar{
+            font-weight: 13px;
+            border-right: 10px;
+            border-radius: 20px;
+            transition: background 0.5s, transfrom 0.5s;
+        }
+        .pie {
+            max-width: 400px;
+            height: auto;
+            border-radius: 50%;
+            position: relative;
+            background: transparent;
+        }
+
+        .Projects table {
+            margin: 10px;
+            padding: 10px;
+            padding-bottom: 20px;
+        }
+
+        .Projects td {
+            padding: 20px;
+            width: 300px;
+            border-width: 5px;
+            border-color: gold;
+            border-radius: 20%;
+        }
+
+
+        .user-contact {
+            margin: 50px;
+            padding: 30px;
+            margin-top: 10px;
+        }
+
+        .user-contact td {
+            margin: 2px;
+            padding: 5px;
+        }
+
+        .user-contact input {
+            width: 500px;
+            height: 40px;
+            background-color: rgb(218, 192, 126);
+            color: black;
+            font-weight: bolder;
+            font-size: large;
+            border-radius: 8%;
+            padding: 5px;
+            border-width: 2px;
+            border-color: black;
+        }
+
+        .user-contact input:hover,
+        .user-contact textarea:focus {
+            background-color: goldenrod;
+            color: black;
+            font-weight: bold;
+            font-size: large;
+        }
+
+        .service-list1 .technical-bar,
+        .service-list1 .radial-bar {
+            background-color: black;
+            padding: 30px;
+            font-size: 13px;
+            font-weight: 13px;
+            border-right: 10px;
+            border-radius: 20px;
+            transition: background 0.5s, transfrom 0.5s;
+        }
+
+        .service-list1 .bar {
+            background-color: black;
+            margin-bottom:10px;
+            padding: 30px;
+            font-size: 13px;
+            font-weight: 13px;
+            border-right: 10px;
+            border-radius: 20px;
+            transition: background 0.5s, transfrom 0.5s;
+            box-shadow: 1px 1px 20px #88880f, 1px 1px 40px goldenrod;
+        }
+        .radial-bar{
+            box-shadow: 1px 1px 20px #88880f, 1px 1px 40px goldenrod;
+        }
+                
+
+        @keyframes slideRight {
+            0% {
+                transform: translateX(0px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideTop {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideBottom {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Portfolio</a>
+        <nav class="navbar">
+            <a href="#" style="--1:1" class="active">Home</a>
+            <a href="#" style="--1:2">About</a>
+            <a href="#" style="--1:3">Skill</a>
+            <a href="#" style="--1:4">Projects</a>
+            <a href="#" style="--1:5">Contact</a>
+        </nav>
+    </header>
+
+    <section class="home">
+        <div class="home-content">
+            <h3>Hello, It's Me</h3>
+            <h1>Khushi Amate</h1>
+            <h3>
+                And I'm a<br> <span class="text"></span>
+            </h3>
+
+            <div class="home-sci">
+                <a href="#" style="--1:6"><i class='bx bxl-linkedin'></i></a>
+                <a href="#" style="--1:7"><i class='bx bxl-instagram'></i></a>
+                <a href="#" style="--1:8"><i class='bx bxl-whatsapp'></i></a>
+            </div>
+            <a href="#" class="btn-box"> More About Me</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="photo.png" alt="About My Image">
+        </div>
+        <div class="about-text">
+            <h2>About <span>Me</span></h2>
+            <h4>Frontend Developer</h4>
+            <p>Hello! I'm Khushi, a passionate frontend developer with a keen eye for design and a love for creating seamless, user-friendly web experiences. Armed with expertise in HTML, CSS, PHP, and JavaScript, I specialize in turning ideas into interactive and visually appealing websites.</p>
+            <a href="#" class="btn-box">More about me</a>
+        </div>
+       
+    </section>
+
+<section>
+    <div class="service" id="service">
+        <div class="container">
+            <h1 class="sub-title">
+                My <span>Service</span>
+            </h1>
+            <div class="service-list">
+                <div><i class='bx bx-code' style="color: yellow;"></i>
+                    <h2>Web Design</h2>
+                    <p>Web design involves creating visually appealing and user-friendly websites. Designers use tools like Adobe XD and Figma for layout planning, implementing their concepts with HTML and CSS. Focus is placed on elements like color schemes and typography to enhance the overall user experience, ensuring a seamless and aesthetically pleasing design.</p>
+                    <a href="#" class="read">Learn more</a>
+                </div>
+                <div><i class='bx bx-crop' style="color: yellow"></i>
+                    <h2>Web Developer</h2>
+                    <p>Web development involves creating and maintaining websites. Front-end focuses on user interfaces with HTML, CSS, and JavaScript, while back-end, using Python and PHP, manages server-side scripting, databases for efficient development.</p>
+                    <a href="#" class="read">Learn more</a>
+                </div>
+                <div><i class='bx bxl-python' style='color:#e2e524'  ></i>
+                    <h2>Python</h2>
+                    <p>a web designer with a passion for Python. While my expertise currently revolves around Python basics, I bring a fresh perspective to web design. I'm on a mission to integrate Python seamlessly into visually appealing and user-friendly websites. .</p>
+                    <a href="#" class="read">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="sub-title">My <span>Skills</span></h1>    
+    <div class="service-list1">
+        <div class="bx">
+                 <span> <h1 class="heading1">Technical Skills</h1></span>
+                <div class="technical-bar">
+                    <div class="bar"><i style="color:goldenrod;" class='bx bxl-html5' style='color:#32bcb6'  ></i><span style="font-size: large;">HTML</span><br>
+                        <div class="info">
+                            <span><img src="star.png" alt="" width="200px"></span>
+                        </div>
+                    </div>
+                    <div class="bar"><i style="color: blue;" class='bx bxl-css3' style='color:#32bcb6'  ></i><span style="font-size: large;">CSS</span><br>
+                        <div class="info">
+                            <span><img src="star3.png" alt="" width="200px"></span>
+                        </div>
+                    </div>
+                    <div class="bar"><i style="color: yellow;"  class='bx bxl-javascript' style='color:#32bcb6'  ></i> <span style="font-size: large;">JavaScript</span><br>
+                        <div class="info">
+                            <span><img src="star4.png" alt="" width="200px"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='bx'>
+                        <span><h1 class="heading2">Professional Skills</h1></span>
+                          <table>
+                            <tr>
+                                <td> <div class="radial-bar">
+                                    <img src="pie85.png" alt="" class="pie">
+                                    <div class="percentage">85%</div>
+                                    <div class="text">Creatvity</div>
+                                </div></td>
+                            <td>
+                                <div class="radial-bar">
+                                    <img src="pie65.png" alt="" class="pie">
+                                    <div class="percentage">65%</div>
+                                    <div class="text">Communication</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                
+                                <div class="radial-bar">
+                                    <img src="pie75.png" alt="" class="pie">
+                                    <div class="percentage">75%</div>
+                                    <div class="text">Problem Solving</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="radial-bar">
+                                    <img src="pie85.png" alt="" class="pie">
+                                    <div class="percentage">85%</div>
+                                    <div class="text">Team Work</div>
+                                </div>
+                            </td>
+                        </tr>
+                          </table>    
+                </div>  
+    </div>
+    </section>
+    <section class="Projects">
+        <h1>My <span>Projects</span></h1>
+        <center>
+        <table>
+            <tr><td><img src="landing page.png" alt=""><br><br><label for="">Landing Page Of Restaurant</label></td>
+            <td><img src="portfolio.png" alt=""><br><br><label for="">Portfolio</label></td>
+            <td><img src="temp.jpeg" alt=""><br><br><label for="">Temperature Converter</label></td></tr>
+        </table>
+    </center>
+    </section>
+    <section class="contact">
+        <center>
+        <table class="contact">
+            <tr>
+                <td>
+                    <h1>Contact <span>Me</span></h1>
+                    <h3>Let's work together</h3>
+                    <div class="home-sci">
+                        <a href="#" style="--1:6"><i class='bx bxl-linkedin'></i></a>
+                        <a href="#" style="--1:7"><i class='bx bxl-instagram'></i></a>
+                        <a href="#" style="--1:8"><i class='bx bxl-whatsapp'></i></a>
+                    </div>
+                </td>
+                <td><form action="#">
+                    <table class="user-contact">
+                        <tr><td> <input type="text" placeholder="Enter Your Name" required></td></tr>
+                        <tr><td> <input type="text" placeholder="Enter your Email" required></td></tr>
+                        <tr><td><input type="text" placeholder="Enter your Subject" required></td></tr>
+                        <tr><td><textarea placeholder="Enter your Message" rows="10" cols="48" style=" background-color: rgb(218, 186, 104);
+                            color: black; font-weight: bolder; font-size: large; border-radius: 5%; padding: 5px;border-width:2px;
+            border-color: black;"></textarea></td></tr>
+                        <tr><td><button>Submit</button></td></tr>
+                    </table>
+                </form>
+                </td>
+            </tr>
+        </table>
+    </center>
+    </section>
+    <script>
+        var typed = new Typed(".text", {
+            strings: ["Frontend Developer", "UI/UX Designer"],
+            typeSpeed: 100,
+            backSpeed: 100,
+            backDelay: 1000,
+            loop: true
+        });
+    </script>
+</body>
+</html>
